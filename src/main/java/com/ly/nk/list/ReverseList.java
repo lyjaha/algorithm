@@ -70,12 +70,12 @@ public class ReverseList {
      * 时间复杂度：O(n)，相当于递归遍历一次链表
      * 空间复杂度：O(n)，递归栈深度为链表长度n
      */
-    public ListNode ReverseList2 (ListNode head) {
+    public ListNode ReverseList2(ListNode head) {
         //递归结束条件
         if(head == null || head.next == null)
             return head;
         //反转下一个
-        ListNode newHead = ReverseList(head.next);
+        ListNode newHead = ReverseList2(head.next);
         //逆转本级节点
         head.next.next = head;
         //尾部设置空节点
