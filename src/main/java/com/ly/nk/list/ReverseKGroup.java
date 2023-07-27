@@ -32,8 +32,54 @@ public class ReverseKGroup {
        }
      }
 
+    /**
+     * 方式一 模拟
+     *
+     * 步骤：
+     * 1.
+     *
+     *
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode reverseKGroup2 (ListNode head, int k) {
+        // 不需要反转的情况
+        if (k <= 1 || head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+
+        //求链表长度
+        int len = 0;
+        while(head != null) {
+            len++;
+            head = head.next;
+        }
+
+        for(int i = 0; i < len / k; i++) {
+            ListNode groupHead = head;
+            ListNode groupTail = null;
+            for(int j = 0; j < k; j++) {
+                ListNode next = head.next;
+                head.next = groupTail;
+                groupTail = head;
+                head = next;
+            }
+            pre.next = groupTail;
+            groupHead.next = head;
+            pre = groupHead;
+        }
+        return dummy.next;
+
+    }
 
     /**
+     * 方式二 递归
+     *
      * 步骤：
      * step 1：每次从进入函数的头节点优先遍历链表k次，分出一组，若是后续不足k个节点，不用反转直接返回头。
      * step 2：从进入函数的头节点开始，依次反转接下来的一组链表，反转过程同BM1.反转链表。
