@@ -1,7 +1,7 @@
 package com.ly.nk.list;
 
 /**
- * 3.链表中的节点每 k 个一组翻转
+ * BM3.链表中的节点每 k 个一组翻转 (LC 25)
  *
  * 描述：
  * 将给出的链表中的节点每 k 个一组翻转，返回翻转后的链表
@@ -36,7 +36,9 @@ public class ReverseKGroup {
      * 方式一 模拟
      *
      * 步骤：
-     * 1.
+     * 1.把链表节点按照 k 个一组分组，使用一个指针 head 依次指向每组的头节点。
+     * 2.指针每次向前移动 k 步，直至链表结尾。
+     * 3.对于每个分组，我们先判断它的长度是否大于等于 k。若是，我们就翻转这部分链表，否则不需要翻转。
      *
      *
      * @param head
@@ -48,9 +50,11 @@ public class ReverseKGroup {
         if (k <= 1 || head == null || head.next == null) {
             return head;
         }
-
+        // 定义虚拟节点
         ListNode dummy = new ListNode(-1);
+        // 虚拟节点的next指向 head
         dummy.next = head;
+        //
         ListNode pre = dummy;
 
         //求链表长度
@@ -94,6 +98,8 @@ public class ReverseKGroup {
      * @return
      */
     public ListNode reverseKGroup (ListNode head, int k) {
+
+
         //找到每次翻转的尾部
         ListNode tail = head;
         //遍历k次到尾部
@@ -118,4 +124,9 @@ public class ReverseKGroup {
         head.next = reverseKGroup(tail, k);
         return pre;
     }
+
+    /**
+     *  方法三 栈
+     *
+     */
 }
