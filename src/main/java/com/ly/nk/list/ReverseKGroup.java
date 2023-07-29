@@ -1,7 +1,7 @@
 package com.ly.nk.list;
 
 /**
- * BM3.链表中的节点每 k 个一组翻转 (LC 25)
+ * BM3.链表中的节点每 k 个一组翻转  LC.25
  *
  * 描述：
  * 将给出的链表中的节点每 k 个一组翻转，返回翻转后的链表
@@ -33,12 +33,17 @@ public class ReverseKGroup {
      }
 
     /**
-     * 方式一 模拟
+     * 方法1 模拟
+     *
+     * 思路：
+     *
      *
      * 步骤：
      * 1.把链表节点按照 k 个一组分组，使用一个指针 head 依次指向每组的头节点。
      * 2.指针每次向前移动 k 步，直至链表结尾。
      * 3.对于每个分组，我们先判断它的长度是否大于等于 k。若是，我们就翻转这部分链表，否则不需要翻转。
+     *
+     * 时空复杂度：
      *
      *
      * @param head
@@ -82,7 +87,10 @@ public class ReverseKGroup {
     }
 
     /**
-     * 方式二 递归
+     * 方式2 递归
+     *
+     * 思路：
+     *
      *
      * 步骤：
      * step 1：每次从进入函数的头节点优先遍历链表k次，分出一组，若是后续不足k个节点，不用反转直接返回头。
@@ -90,6 +98,7 @@ public class ReverseKGroup {
      * step 3：这一组经过反转后，原来的头变成了尾，后面接下一组的反转结果，下一组采用上述递归继续。
      *
      *
+     * 时空复杂度：
      * 时间复杂度：O(n)，一共遍历链表 n 个节点
      * 空间复杂度：O(n)，递归栈最大深度 为n/k
      *
@@ -98,7 +107,6 @@ public class ReverseKGroup {
      * @return
      */
     public ListNode reverseKGroup (ListNode head, int k) {
-
 
         //找到每次翻转的尾部
         ListNode tail = head;
@@ -126,7 +134,7 @@ public class ReverseKGroup {
     }
 
     /**
-     *  方法三 栈
+     *  方法3 栈
      *
      */
 }
