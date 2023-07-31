@@ -113,8 +113,15 @@ public class MergeKList {
 
 
     /**
-     * 方法2：优先队列
+     * 方法2：顺序合并
      *
      */
+    public ListNode mergeKLists2 (ListNode[] lists) {
+        ListNode ans = null;
+        for (int i = 0; i < lists.length; ++i) {
+            ans = mergeTwoLists(ans, lists[i]);
+        }
+        return ans;
+    }
 
 }
