@@ -91,6 +91,5 @@ public class ParityOrderingList {
         node4.next = node5;
         node5.next = node6;
         node6.next = null;
-        System.out.println(parityOrdering(node1));
     }
 }
