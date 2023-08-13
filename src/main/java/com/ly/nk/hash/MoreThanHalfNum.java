@@ -13,6 +13,8 @@ import java.util.Map;
  *  数据范围：n≤50000，数组中元素的值 0≤val≤10000
  *  要求：空间复杂度：O(1)，时间复杂度 O(n)
  *
+ *
+ *
  */
 public class MoreThanHalfNum {
 
@@ -74,7 +76,7 @@ public class MoreThanHalfNum {
 
 
     /**
-     * 方法3：候选法（最优解）
+     * 方法3：候选法（最优解）---投票算法
      *
      * 思路：
      *
@@ -84,14 +86,37 @@ public class MoreThanHalfNum {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      *
-     * @param args
+     * @param numbers
      */
-    //TODO
+    public static int moreThanHalfNumSolution3 (int[] numbers) {
+        int candidate = numbers[0];
+        int vote  = 1;
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] == candidate){
+                vote++;
+            }else {
+                vote--;
+            }
+            if (vote  == 0){
+                candidate = numbers[i];
+                vote  = 1;
+            }
+        }
+
+        int count = 0;
+        for (int num : numbers){
+            if (num == candidate){
+                count++;
+            }
+        }
+        return count > numbers.length / 2 ? candidate : 0;
+    }
 
 
     public static void main(String[] args) {
-        int[] ints = {1,2,4,2,2};
-        System.out.println(moreThanHalfNumSolution(ints));
+        int[] ints = {1};
+//        System.out.println(moreThanHalfNumSolution(ints));
+        System.out.println(moreThanHalfNumSolution3(ints));
     }
 
 }
