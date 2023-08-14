@@ -14,7 +14,7 @@ import java.util.Map;
  * 要求：空间复杂度O(n)，时间复杂度O(nlogn)
  *
  */
-public class twoSum {
+public class TwoSum {
 
     /**
      * 方法1：哈希表
