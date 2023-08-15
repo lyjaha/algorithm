@@ -46,11 +46,13 @@ public class Print {
      * 步骤：
      *
      * 时空复杂度：
+     * 时间复杂度：O(n)，每个节点访问一次，因为reverse的时间复杂度为O(n)，按每层元素reverse也相当于O(n)
+     * 空间复杂度：O(n)，队列的空间最长为 O(n)
      *
      * @param pRoot TreeNode类
      * @return int整型ArrayList<ArrayList<>>
      */
-    public ArrayList<ArrayList<Integer>> Print (TreeNode pRoot) {
+    public ArrayList<ArrayList<Integer>> print (TreeNode pRoot) {
         TreeNode head = pRoot;
         ArrayList<ArrayList<Integer> > res = new ArrayList<>();
 
@@ -85,6 +87,24 @@ public class Print {
             res.add(row);
         }
         return res;
-
     }
+
+    /**
+     * 方法2：双栈法
+     *
+     * 思路：
+     *
+     * 步骤：
+     *
+     * 时空复杂度：
+     * 时间复杂度：O(n)，其中n为二叉树的节点数，遍历二叉树的每个节点
+     * 空间复杂度：O(n)，两个栈的空间最坏情况为 n
+     *
+     */
+    public ArrayList<ArrayList<Integer>> print2 (TreeNode pRoot) {
+        ArrayList<ArrayList<Integer> > res = new ArrayList<>();
+
+        return res;
+    }
+
 }
