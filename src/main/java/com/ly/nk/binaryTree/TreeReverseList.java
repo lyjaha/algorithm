@@ -58,14 +58,38 @@ public class TreeReverseList {
      *  5：递归出口即是节点为空则返回。
      *
      * 时空复杂度：
+     *  空间复杂度：O(n)，递归栈所需要的最大空间
+     *  时间复杂度：O(n)，其中n为二叉树节点数，中序遍历所有节点
      *
      *
      * @param pRootOfTree
      * @return
      */
-    public TreeNode convert(TreeNode pRootOfTree) {
+    //返回的第一个指针，即为最小值，先定为null
+    public TreeNode head = null;
+    //中序遍历当前值的上一位，初值为最小值，先定为null
+    public TreeNode pre = null;
 
-        return null;
+    public TreeNode convert(TreeNode pRootOfTree) {
+        if (pRootOfTree == null){
+            return null;
+        }
+
+        //首先递归到最左最小值
+        convert(pRootOfTree.left);
+
+        //找到最小值，初始化head与pre
+        if (pre == null){
+            head = pRootOfTree;
+            pre = pRootOfTree;
+        }else {
+            //当前节点与上一节点建立连接，将pre设置为当前值
+            pre.right = pRootOfTree;
+            pRootOfTree.left = pre;
+            pre = pRootOfTree;
+        }
+        convert(pRootOfTree.right);
+        return head;
     }
 
     /**
