@@ -46,22 +46,31 @@ public class BinaryLookup {
      */
     public static int search (int[] nums, int target) {
 
-        int l = 0;
-        int r = nums.length - 1;
-        //从数组首尾开始，直到二者相遇
-        while (l <= r) {
-            //每次检查中点的值
-            int m = (l + r) / 2;
-            if (nums[m] == target) {
-                return m;
+        if(nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        // 初始化左边界
+        int left = 0;
+        // 数组索引从0开始，减1就是索引值，不减1会导致越界问题
+        int right = nums.length - 1;
+        // 当左边界小于等于右边界时执行循环
+        while (left + 1 < right) {
+            // 计算中间索引
+            int mid = left + (right - left) / 2;
+            // 如果中间值等于目标值，直接返回中间值的引
+            if (nums[mid] == target) {
+                return mid;
             }
-            //进入左的区间
-            if (nums[m] > target) {
-                r = m - 1;
+            // 如果中间值大于目标值，说明目标值在左侧，更新右边界
+            if (nums[mid] > target) {
+                right = mid - 1;
             }else {
-                l = m + 1;
+                // 如果中间值小于目标值，说明标值在右侧，更新左边界
+                left = mid + 1;
             }
         }
+        // 当left > right时，说明目标值不存在，返回-1
         return -1;
     }
 
