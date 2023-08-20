@@ -24,7 +24,7 @@ package com.ly.nk.binaryTree;
  * 说明：因为一个节点也可以是它自己的祖先.所以输出12
  *
  */
-public class RecentPublicAncestors {
+public class SearchPublicAncestors {
 
     public static class TreeNode {
         int val;
