@@ -1,4 +1,4 @@
-package com.ly.nk.dynaimcArrays;
+package com.ly.nk.dynamicArrays;
 
 /**
  *  BM72 连续子数组的最大和
