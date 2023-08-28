@@ -71,7 +71,6 @@ public class LongestAscentSub {
         int[] dp = new int[n];
         // 初始值为1
         Arrays.fill(dp, 1);
-
         //或者在第一个for循环中使用， dp[i] = 1;
 
         // 初始化最长序列长度为1
