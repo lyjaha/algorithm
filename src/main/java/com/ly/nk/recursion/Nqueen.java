@@ -41,6 +41,8 @@ public class Nqueen {
      * 步骤：
      *
      * 时空复杂度：
+     * 时间复杂度：O(n∗n!)，isValid函数每次检查复杂度为O(n)，递归过程相当于对长度为n的数组求全排列，复杂度为O(n!)
+     * 空间复杂度：O(n)，辅助数组和栈空间最大为O(n)
      *
      *
      * @param n int整型 the n
