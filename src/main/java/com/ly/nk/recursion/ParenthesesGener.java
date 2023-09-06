@@ -44,36 +44,26 @@ public class ParenthesesGener {
      */
     public ArrayList<String> generateParenthesis (int n) {
         ArrayList<String> res = new ArrayList<>();
-        // 定义字符数组，长度为 2n
-        char[] str = new char[2 * n];
         // 从第 0 个字符开始搜索
-        backtrack(0, str, 0, 0, res);
+        backtrack(0, 0, "", res, n);
 
         return res;
     }
 
-    private void backtrack(int index , char[] str, int left, int right, ArrayList<String> res) {
+    private void backtrack(int left, int right, String temp, ArrayList<String> res, int n) {
 
-        // 当添加了 2n 个字符，则得到一个合法的解
-        if (index == str.length){
-            res.add(new String(str));
+        //左右括号都用完了，就加入结果
+        if(left == n && right == n){
+            res.add(temp);
             return;
         }
-        // 如果左括号的数量小于 n，则可以添加左括号
-        if (left < str.length / 2) {
-            str[index] = '(';
-            // 递归进入下一层
-            backtrack(index + 1, str, left + 1, right, res);
-            // 撤销选择
-            str[index] = '\0';
+        //使用一次左括号
+        if(left < n){
+            backtrack(left + 1, right, temp + "(", res, n);
         }
-        // 如果右号的数量小于左括号，则可以添加右括号
-        if (left > right) {
-            str[index] = ')';
-            // 递归进入下一层
-            backtrack(index + 1, str, left, right + 1, res);
-            // 撤销选择
-            str[index] = '\0';
+        //使用右括号个数必须少于左括号
+        if(right < n && left > right){
+            backtrack(left, right + 1, temp + ")", res, n);
         }
     }
 
