@@ -25,7 +25,7 @@ package com.ly.nk.list;
  */
 public class ReverseBetween {
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next = null;
         public ListNode(int val) {
@@ -58,15 +58,15 @@ public class ReverseBetween {
      * @return ListNode类
      */
 
-    public ListNode reverseBetween (ListNode head, int m, int n) {
+    public static ListNode reverseBetween (ListNode head, int m, int n) {
 
         // 空表头 （用于在链表的头部添加元素时作为哨兵节点（sentinel））
         ListNode res = new ListNode(-1);
         res.next = head;
 
-        // 前序节点
+        // 指向哨兵节点(前驱节点)
         ListNode pre = res;
-        // 当前节点
+        // 指向头节点
         ListNode cur = head;
 
         // 找到m
@@ -76,12 +76,16 @@ public class ReverseBetween {
         }
         // 从m反转到n
         for (int i = m; i < n; i++) {
+            // 创建一个指针，指向当前节点的下一个节点。
             ListNode temp = cur.next;
+            // 将当前节点 cur 的 next 指针指向 temp 的下一个节点。
             cur.next = temp.next;
+            // 将 temp 的 next 指针指向 pre 的下一个节点。
             temp.next = pre.next;
+            // 将 pre 的 next 指针指向 temp。
             pre.next = temp;
         }
-        //返回去掉表头
+        //返回哨兵节点的下一个节点，跳过哨兵节点，即为反转后的链表。
         return res.next;
     }
 
@@ -127,5 +131,29 @@ public class ReverseBetween {
         //拼接已翻转
         head.next = node;
         return head;
+    }
+
+
+    public static void main(String[] args) {
+        // 创建测试链表 1 -> 2 -> 3 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        ListNode node1 = new ListNode(2);
+        ListNode node2 = new ListNode(3);
+        ListNode node3 = new ListNode(4);
+        ListNode node4 = new ListNode(5);
+        head.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        //转链表区间
+        ListNode reversedHead = reverseBetween(head, 2, 4);
+
+        // 打印反转后的链表
+        ListNode node = reversedHead;
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
+        }
     }
 }
