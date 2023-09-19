@@ -44,6 +44,8 @@ public class ReverseKGroup {
      * 3.对于每个分组，我们先判断它的长度是否大于等于 k。若是，我们就翻转这部分链表，否则不需要翻转。
      *
      * 时空复杂度：
+     * 时间复杂度：O(n)，其中 n 为链表的长度。
+     * 空间复杂度：O(1)，只需要建立常数个变量。
      *
      *
      * @param head
@@ -56,7 +58,7 @@ public class ReverseKGroup {
             return head;
         }
         // 定义虚拟节点
-        ListNode dummy = new ListNode(-1);
+        ListNode dummy = new ListNode(0);
         // 虚拟节点的next指向 head
         dummy.next = head;
         //
