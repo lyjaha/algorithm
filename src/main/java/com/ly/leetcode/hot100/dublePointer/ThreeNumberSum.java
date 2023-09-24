@@ -50,6 +50,8 @@ public class ThreeNumberSum {
      * 5.重复上述步骤，直到遍历完所有元素。
      *
      * 时空复杂度：
+     * 时间复杂度为 O(n^2)，其中 n 是数组的长度。排序的时间复杂度为 O(nlogn)，双指针遍历的时间复杂度为 O(n)。
+     * 空间复杂度为 O(1)，不包括存储结果的空间。
      *
      * @param nums
      * @return
@@ -62,7 +64,7 @@ public class ThreeNumberSum {
         Arrays.sort(nums);
 
         // 遍历数组
-        for (int i = 0; i < nums.length - 2; i++) {
+        for (int i = 0; i < nums.length; i++) {
             // 如果当前元素大于0，则不可能存在三数之和为0的组合，直接返回结果
             if (nums[i] > 0) {
                 return result;
