@@ -89,12 +89,23 @@ public class ReverseList {
      * 步骤：
      *
      * 时空复杂度：
+     * 时间复杂度：O(n)，其中 n 是链表的长度。需要对链表的每个节点进行反转操作。
+     * 空间复杂度：O(n)，其中 n 是链表的长度。空间复杂度主要取决于递归调用的栈空间，最多为 n 层。
      *
      * @param head
      * @return
      */
     public ListNode reverseList2(ListNode head) {
-        return null;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = reverseList(head.next);
+
+        head.next.next = head;
+
+        head.next = null;
+
+        return newHead;
 
     }
 
